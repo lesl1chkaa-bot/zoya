@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoya Like 67 - Много 67</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Скрываем полосы прокрутки */
+            background-color: #050505; /* Почти черный фон */
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Контейнер для фона из чисел */
+        #background-67 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Числа позади основного текста */
+            overflow: hidden;
+        }
+
+        /* Стили для фоновых чисел */
+        .bg-number {
+            position: absolute;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            user-select: none; /* Нельзя выделить текст */
+            pointer-events: none; /* Пропускают клики мыши */
+            animation: float-around linear infinite;
+        }
+
+        /* Основной центральный контейнер */
+        .main-container {
+            position: relative;
+            z-index: 10; /* Поверх фоновых чисел */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0,0,0,0.6); /* Полупрозрачная подложка для читаемости */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px); /* Легкое размытие под текстом */
+        }
+
+        .zoya {
+            font-family: 'Pacifico', cursive;
+            font-size: 8rem;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: -15px;
+            filter: drop-shadow(0 0 20px rgba(255, 154, 158, 0.8));
+        }
+
+        .sub-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+        }
+
+        .like {
+            color: #ddd;
+            font-weight: 400;
+            font-size: 3rem;
+        }
+
+        .sixty-seven {
+            color: #00eaff; /* Очень яркий голубой */
+            text-shadow: 0 0 30px rgba(0, 234, 255, 1), 0 0 15px rgba(0, 234, 255, 0.7);
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        /* Неоновая обводка для центрального 67 */
+        .sixty-seven::after {
+            content: "67";
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            color: transparent;
+            -webkit-text-stroke: 1px #00eaff;
+            filter: blur(4px);
+            opacity: 0.8;
+        }
+
+        /* Анимация плавного хаотичного движения */
+        @keyframes float-around {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: var(--max-opacity); }
+            90% { opacity: var(--max-opacity); }
+            100% { transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate)); opacity: 0; }
+        }
+
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            .zoya { font-size: 5rem; margin-bottom: 0; }
+            .sub-text { font-size: 2rem; gap: 10px; }
+            .like { font-size: 1.8rem; }
+            .sixty-seven { font-size: 2.5rem; }
+            .main-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="background-67"></div>
+
+    <div class="main-container">
+        <div class="zoya">Zoya</div>
+        <div class="sub-text">
+            <span class="like">Like</span>
+            <span class="sixty-seven">67</span>
+        </div>
+    </div>
+
+    <script>
+        // Функция для создания хаоса из чисел 67
+        function createChaos() {
+            const container = document.getElementById('background-67');
+            const numberOfElements = 400; // КОЛИЧЕСТВО ЧИСЕЛ ВОКРУГ. Можно увеличить.
+
+            for (let i = 0; i < numberOfElements; i++) {
+                const el = document.createElement('div');
+                el.className = 'bg-number';
+                el.innerText = '67';
+
+                // СЛУЧАЙНЫЕ ПАРАМЕТРЫ ДЛЯ КАЖДОГО ЧИСЛА
+
+                // 1. Позиция (по всему экрану)
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 100;
+                el.style.left = `${startX}%`;
+                el.style.top = `${startY}%`;
+
+                // 2. Размер (от очень маленьких до средних)
+                const fontSize = Math.random() * (3 - 0.5) + 0.5; // от 0.5rem до 3.rem
+                el.style.fontSize = `${fontSize}rem`;
+
+                // 3. Цвет и прозрачность (в сине-голубой гамме)
+                const blueHue = Math.random() * (220 - 180) + 180; // Оттенки синего
+                const lightness = Math.random() * (80 - 30) + 30; // Яркость
+                const maxOpacity = Math.random() * (0.6 - 0.1) + 0.1; // Прозрачность (чтобы не перекрывать центр)
+                el.style.color = `hsl(${blueHue}, 100%, ${lightness}%)`;
+                
+                // Передаем максимальную прозрачность в CSS переменную для анимации
+                el.style.setProperty('--max-opacity', maxOpacity);
+
+                // 4. Параметры анимации движения
+                const duration = Math.random() * (20 - 5) + 5; // Длительность от 5 до 20 секунд
+                const delay = Math.random() * -20; // Случайная задержка старта (чтобы все сразу не появлялись)
+                const moveX = (Math.random() - 0.5) * 300; // Движение по X на +/- 150px
+                const moveY = (Math.random() - 0.5) * 300; // Движение по Y на +/- 150px
+                const rotate = (Math.random() - 0.5) * 90; // Вращение на +/- 45 градусов
+
+                el.style.animationDuration = `${duration}s`;
+                el.style.animationDelay = `${delay}s`;
+                
+                // Передаем параметры движения в CSS переменные
+                el.style.setProperty('--move-x', `${moveX}px`);
+                el.style.setProperty('--move-y', `${moveY}px`);
+                el.style.setProperty('--rotate', `${rotate}deg`);
+
+                // Добавляем элемент на страницу
+                container.appendChild(el);
+            }
+        }
+
+        // Запускаем создание хаоса при загрузке страницы
+        window.onload = createChaos;
+    </script>
+
+</body>
+</html>
